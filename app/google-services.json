@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "851285865405",
+    "project_id": "campus-cravings-1871e",
+    "storage_bucket": "campus-cravings-1871e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:851285865405:android:58de7f692e80986b88d8d4",
+        "android_client_info": {
+          "package_name": "com.example.campuscravings"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "851285865405-3ojnb5sd7i925ce40pmn6o0g0aeumip3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.campuscravings",
+            "certificate_hash": "236a07f70ef683b952182a77d61c0d00f3d3266f"
+          }
+        },
+        {
+          "client_id": "851285865405-12bvsdjv9ihk9ed82jctibp1f6nka2ei.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSwnhJAAM2gt1vkQ4umETk9msldSg9aBc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "851285865405-12bvsdjv9ihk9ed82jctibp1f6nka2ei.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
