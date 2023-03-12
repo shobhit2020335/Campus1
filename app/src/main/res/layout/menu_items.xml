@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/menuCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:cardMaxElevation="6dp"
+
+        app:cardPreventCornerOverlap="true"
+
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/menuImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:paddingLeft="20dp"
+                >
+                <TextView
+                    android:id="@+id/menuName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp">
+
+                    <RatingBar
+                        android:id="@+id/menuRatingBar"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:isIndicator="true"
+                        android:progressTint="#3f5e18"
+                        android:rating="3"></RatingBar>
+                    <Space
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content">
+                    </Space>
+                    <TextView
+                        android:id="@+id/menuCalories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="256"
+                        android:textColor="#3f5e18"></TextView>
+
+                    <Space
+                        android:layout_width="5dp"
+                        android:layout_height="wrap_content">
+                    </Space>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="kcal"
+                        android:textColor="#3f5e18"></TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="\u20B9"
+                        android:textColor="#3f5e18"
+                        android:textStyle="bold"
+                        >
+                    </TextView>
+                    <Space
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"></Space>
+                    <TextView
+                        android:id="@+id/menuPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="345"
+                        android:textColor="#3f5e18"
+                        android:textStyle="bold">
+                    </TextView>
+                    <Space
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"></Space>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="#3f5e18"
+                        android:insetTop="2dp"
+                        android:insetBottom="2dp"
+                        android:text="Add Item"></Button>
+                    <Space
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"></Space>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
