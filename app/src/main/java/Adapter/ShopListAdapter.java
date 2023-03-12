@@ -1,16 +1,13 @@
 package Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,17 +25,18 @@ import com.example.campuscravings.R;
 
 import java.util.ArrayList;
 
+import Fragments.MenuFragment;
 import Fragments.ShopFragment;
+import Model.ShopModel;
 import Model.collegeModel;
 
-public class campusListAdapter extends RecyclerView.Adapter<campusListAdapter.Viewholder> {
-
+public class ShopListAdapter extends RecyclerView.Adapter<ShopListAdapter.Viewholder>{
 
     private Context context;
-    private ArrayList<collegeModel> modelArrayList;
+    private ArrayList<ShopModel> modelArrayList;
     private FragmentManager fragmentManager;
 
-    public campusListAdapter(Context context, ArrayList<collegeModel> modelArrayList, FragmentManager fragmentManager) {
+    public ShopListAdapter(Context context, ArrayList<ShopModel> modelArrayList, FragmentManager fragmentManager) {
         this.context = context;
         this.modelArrayList = modelArrayList;
         this.fragmentManager = fragmentManager;
@@ -47,19 +45,19 @@ public class campusListAdapter extends RecyclerView.Adapter<campusListAdapter.Vi
     @NonNull
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.campusitems, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shop_items, parent, false);
         return new Viewholder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
         holder.textView.setText(modelArrayList.get(position).getName());
-        holder.campusCard.setOnClickListener(new View.OnClickListener() {
+        holder.shopCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ShopFragment shopFragment = new ShopFragment(modelArrayList.get(position).getKey(), modelArrayList.get(position).getShopsSnapshot()); // position might cause problems
+                MenuFragment menuFragment = new MenuFragment(modelArrayList.get(position).getCampusKey(), modelArrayList.get(position).getKey(), modelArrayList.get(position).getMenuSnapshot()); // position might cause problems
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.parentActivity, shopFragment);
+                transaction.replace(R.id.parentActivity, menuFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
 
@@ -80,41 +78,24 @@ public class campusListAdapter extends RecyclerView.Adapter<campusListAdapter.Vi
                     }
                 })
                 .into(holder.imageView);
-        String key = modelArrayList.get(position).getKey();
-//        holder.textView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(context, airport.class);
-//                intent.putExtra("name", holder.textView.getText().toString());
-//                intent.putExtra("i1", holder.imageView.toString());
-//                intent.putExtra("key", key);
-//                context.startActivity(intent);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//
-//
-//            }
-//        });
-
-
     }
+
     @Override
     public int getItemCount() {
-        return  modelArrayList.size();
+        return modelArrayList.size();
     }
-
 
     class Viewholder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView textView;
-        CardView campusCard;
+        CardView shopCard;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.campusImage);
-            textView = itemView.findViewById(R.id.campusName);
-            campusCard = itemView.findViewById(R.id.campusCard);
+            imageView = itemView.findViewById(R.id.shopImage);
+            textView = itemView.findViewById(R.id.shopName);
+            shopCard = itemView.findViewById(R.id.shopCard);
 
         }
     }
-
 }

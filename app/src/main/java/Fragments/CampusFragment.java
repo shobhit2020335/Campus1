@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -31,6 +33,7 @@ public class CampusFragment extends Fragment {
     private campusListAdapter l;
     private DatabaseReference myref;
     private ArrayList<collegeModel> modelList;
+    private FragmentManager fragmentManager;
 
     public CampusFragment() {
     }
@@ -39,7 +42,7 @@ public class CampusFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         myref= FirebaseDatabase.getInstance().getReference();
-
+        this.fragmentManager= getActivity().getSupportFragmentManager();
     }
 
     @Override
@@ -65,9 +68,13 @@ public class CampusFragment extends Fragment {
                     model.setImg((String) snapshot1.child("img").getValue());
                     model.setName(snapshot1.child("name").getValue().toString());
                     model.setKey(snapshot1.getKey());
+                    // if shops are present in database then add those in model
+                    if(snapshot1.hasChild("shops"))
+                        model.setShopsSnapshot(snapshot1.child("shops"));
                     modelList.add(model);
                 }
-                l=new campusListAdapter(getContext(), modelList);
+
+                l=new campusListAdapter(getContext(), modelList, fragmentManager);
                 binding.campusRecyclerView.setAdapter(l);
                 l.notifyDataSetChanged();
             }

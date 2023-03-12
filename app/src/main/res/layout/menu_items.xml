@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/campusCard"
+        android:id="@+id/menuCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="1dp"
@@ -35,7 +35,7 @@
             >
 
             <ImageView
-                android:id="@+id/campusImage"
+                android:id="@+id/menuImage"
                 android:layout_width="170dp"
                 android:layout_height="130dp"
                 android:layout_gravity="center"
@@ -68,7 +68,7 @@
                     android:layout_marginStart="0dp">
 
                     <TextView
-                        android:id="@+id/campusName"
+                        android:id="@+id/menuName"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="IIIT Delhi"
