@@ -27,9 +27,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="120dp"
             android:background="@drawable/bg1"
-
 
 
             >
@@ -37,14 +36,14 @@
             <ImageView
                 android:id="@+id/campusImage"
                 android:layout_width="170dp"
-                android:layout_height="130dp"
+                android:layout_height="110dp"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:src="@drawable/iiit"
                 android:background="@color/black"
-
                 android:padding="1dp"
+
                 android:scaleType="centerCrop"
+                android:src="@drawable/iiit"
 
                 tools:ignore="ImageContrastCheck">
 
@@ -53,19 +52,20 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="20dp"
-                android:layout_gravity="center"
                 android:orientation="horizontal">
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:backgroundTint="#3f5e18"
-                    android:layout_marginTop="0dp"
-                    app:cardCornerRadius="10dp"
-                    android:layout_marginStart="0dp">
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="#3F5E18"
+                    app:cardCornerRadius="10dp">
 
                     <TextView
                         android:id="@+id/campusName"
@@ -73,6 +73,8 @@
                         android:layout_height="match_parent"
                         android:text="IIIT Delhi"
                         android:textAlignment="center"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
                         android:textColor="@color/white"
                         android:textSize="35sp"
                         android:textStyle="bold">
@@ -81,11 +83,6 @@
 
 
                 </androidx.cardview.widget.CardView>
-
-
-
-
-
 
 
             </LinearLayout>

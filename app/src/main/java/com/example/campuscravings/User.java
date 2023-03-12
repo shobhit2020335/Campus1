@@ -2,7 +2,37 @@ package com.example.campuscravings;
 
 public class User {
 
-    private String name,email,password;
+    private String name;
+    private String email;
+    private String password;
+    private Long phno;
+    private String address;
+
+    public Long getPhno() {
+        return phno;
+    }
+
+    public void setPhno(Long phno) {
+        this.phno = phno;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    private String dob;
     private String profilephoto;
 
 

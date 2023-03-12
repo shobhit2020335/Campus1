@@ -7,14 +7,72 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/hw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:textSize="30sp"
+        android:id="@+id/getStartedButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/getstarteddesign"
+        android:text="Get Started"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="31sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/backgroundImage" />
+
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="30dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/getStartedButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mainbg" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/campus"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginEnd="70dp"-->
+<!--        android:text="𝓒𝓪𝓶𝓹𝓾𝓼 "-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="60sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/backgroundImage" />-->
+
+    <ImageView
+        android:id="@+id/burgerImage"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="30dp"
+        android:foregroundGravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/backgroundImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/backgroundImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/burger" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/cravings"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="50dp"-->
+<!--        android:text="𝓒𝓻𝓪𝓿𝓲𝓷𝓰𝓼"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="60sp"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/campus"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/campus" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,7 +23,7 @@ public class Home extends AppCompatActivity {
         binding=ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.parentActivity,new HomeFragment());
+        transaction.replace(R.id.parent,new HomeFragment());
         transaction.commit();
         binding.BottomNavigation.setOnItemSelectListener(new ReadableBottomBar.ItemSelectListener() {
             @Override
@@ -31,19 +31,19 @@ public class Home extends AppCompatActivity {
                 FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
                 switch (i){
                     case 0:
-                        transaction.replace(R.id.parentActivity,new HomeFragment());
+                        transaction.replace(R.id.parent,new HomeFragment());
                         Toast.makeText(Home.this, "Home", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
-                        transaction.replace(R.id.parentActivity,new CampusFragment());
+                        transaction.replace(R.id.parent,new CampusFragment());
                         Toast.makeText(Home.this, "Campus", Toast.LENGTH_SHORT).show();
                         break;
                     case 2:
-                        transaction.replace(R.id.parentActivity,new NotificationFragment());
+                        transaction.replace(R.id.parent,new NotificationFragment());
                         Toast.makeText(Home.this, "Notification", Toast.LENGTH_SHORT).show();
                         break;
                     case 3:
-                        transaction.replace(R.id.parentActivity,new ProfileFragment());
+                        transaction.replace(R.id.parent,new ProfileFragment());
                         Toast.makeText(Home.this, "Profile", Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -52,3 +52,4 @@ public class Home extends AppCompatActivity {
         });
     }
 }
+//FF3F5E18

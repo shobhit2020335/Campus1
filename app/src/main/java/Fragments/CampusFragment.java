@@ -48,6 +48,7 @@ public class CampusFragment extends Fragment {
 
         binding=FragmentCampusBinding.inflate(inflater,container,false);
         binding.campusRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.campusRecyclerView.setNestedScrollingEnabled(false);
         modelList=new ArrayList<>();
         clearall();
         getdata();
