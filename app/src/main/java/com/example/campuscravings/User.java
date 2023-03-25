@@ -2,11 +2,11 @@ package com.example.campuscravings;
 
 public class User {
 
-    private String name;
-    private String email;
-    private String password;
-    private Long phno;
-    private String address;
+    private String name="";
+    private String email="";
+    private String password="";
+    private Long phno= Long.valueOf(0000000000);
+    private String address="";
 
     public Long getPhno() {
         return phno;

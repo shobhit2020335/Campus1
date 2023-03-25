@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import com.example.campuscravings.R;
 import com.example.campuscravings.User;
 import com.example.campuscravings.databinding.FragmentCampusBinding;
+import com.example.campuscravings.databinding.FragmentEditProfileBinding;
 import com.example.campuscravings.databinding.FragmentProfileBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -82,7 +85,13 @@ public class ProfileFragment extends Fragment {
         binding.editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.profileLayout.setVisibility(View.INVISIBLE);
+                EditProfile fragment2 = new EditProfile();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.profileLayout, fragment2);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                //                binding.profileLayout.setVisibility(View.INVISIBLE);
             }
         });
         return binding.getRoot();

@@ -8,15 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -28,7 +23,6 @@ import com.example.campuscravings.R;
 
 import java.util.ArrayList;
 
-import Fragments.ShopFragment;
 import Model.collegeModel;
 
 public class campusListAdapter extends RecyclerView.Adapter<campusListAdapter.Viewholder> {
@@ -36,12 +30,10 @@ public class campusListAdapter extends RecyclerView.Adapter<campusListAdapter.Vi
 
     private Context context;
     private ArrayList<collegeModel> modelArrayList;
-    private FragmentManager fragmentManager;
 
-    public campusListAdapter(Context context, ArrayList<collegeModel> modelArrayList, FragmentManager fragmentManager) {
+    public campusListAdapter(Context context, ArrayList<collegeModel> modelArrayList) {
         this.context = context;
         this.modelArrayList = modelArrayList;
-        this.fragmentManager = fragmentManager;
     }
 
     @NonNull
@@ -54,17 +46,6 @@ public class campusListAdapter extends RecyclerView.Adapter<campusListAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
         holder.textView.setText(modelArrayList.get(position).getName());
-        holder.campusCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ShopFragment shopFragment = new ShopFragment(modelArrayList.get(position).getKey(), modelArrayList.get(position).getShopsSnapshot()); // position might cause problems
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.parentActivity, shopFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
-
-            }
-        });
         Glide.with(context)
                 .load(modelArrayList.get(position).getImg()).placeholder(R.drawable.placeholder).addListener(new RequestListener<Drawable>() {
                     @Override
@@ -106,15 +87,13 @@ public class campusListAdapter extends RecyclerView.Adapter<campusListAdapter.Vi
     class Viewholder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView textView;
-        CardView campusCard;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.campusImage);
             textView = itemView.findViewById(R.id.campusName);
-            campusCard = itemView.findViewById(R.id.campusCard);
+
 
         }
     }
-
 }
