@@ -12,7 +12,7 @@ public class LoadingDialog {
         this.activity = activity;
     }
 
-    void startLoading() {
+    public void startLoading() {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         LayoutInflater inflater = activity.getLayoutInflater();
         builder.setView(inflater.inflate(R.layout.loadingbar, null));
@@ -21,7 +21,7 @@ public class LoadingDialog {
         dialog.show();
     }
 
-    void dismissdialog() {
+    public void dismissdialog() {
         dialog.dismiss();
     }
 }

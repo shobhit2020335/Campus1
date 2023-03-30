@@ -94,6 +94,9 @@ public class ProfileFragment extends Fragment {
                 //                binding.profileLayout.setVisibility(View.INVISIBLE);
             }
         });
+
+
+
         return binding.getRoot();
     }
 }
