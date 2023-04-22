@@ -1,6 +1,7 @@
 package com.example.campuscravings;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.widget.Toast;
 import com.example.campuscravings.databinding.ActivityHomeBinding;
 import com.iammert.library.readablebottombar.ReadableBottomBar;
 
+import androidx.fragment.app.Fragment;
+//import com.example.campuscravings.Fragments.HomeFragment;
 import Fragments.CampusFragment;
 import Fragments.HomeFragment;
 import Fragments.NotificationFragment;
@@ -23,7 +26,8 @@ public class Home extends AppCompatActivity {
         binding=ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.parent,new HomeFragment());
+//        Fragment fragment= new Fragment(/*/);
+        transaction.replace(R.id.parent, new HomeFragment());
         transaction.commit();
         binding.BottomNavigation.setOnItemSelectListener(new ReadableBottomBar.ItemSelectListener() {
             @Override
@@ -31,7 +35,7 @@ public class Home extends AppCompatActivity {
                 FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
                 switch (i){
                     case 0:
-                        transaction.replace(R.id.parent,new HomeFragment());
+                        transaction.replace(R.id.parent, new HomeFragment());
                         Toast.makeText(Home.this, "Home", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:

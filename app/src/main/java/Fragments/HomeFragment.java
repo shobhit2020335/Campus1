@@ -1,5 +1,7 @@
 package Fragments;
 
+//import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+//import androidx.fragment.app.Fragment;
+import com.example.campuscravings.Cart;
 import com.example.campuscravings.R;
 import com.example.campuscravings.databinding.FragmentHomeBinding;
 import com.google.firebase.database.DataSnapshot;
@@ -56,6 +60,13 @@ public class HomeFragment extends Fragment {
         clearall();
         getdata();
         binding.homeFooditemRV.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.homeCarticon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(), Cart.class);
+                startActivity(intent);
+            }
+        });
         return binding.getRoot();
     }
 
