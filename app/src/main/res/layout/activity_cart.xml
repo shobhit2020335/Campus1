@@ -67,7 +67,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cartitems"
             android:layout_width="match_parent"
-            android:layout_height="400dp" />
+            android:layout_height="339dp" />
         <!-- Remove the linear layout below recycler view will be used-->
 
         <androidx.constraintlayout.widget.ConstraintLayout

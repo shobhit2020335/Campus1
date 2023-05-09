@@ -1,8 +1,11 @@
 package Model;
 
-public class FoodModel {
-    String name,image;
-    Long price,quatntity;
+public class cartModel {
+    String name;
+    String image;
+
+    public cartModel() {
+    }
 
     public String getName() {
         return name;
@@ -20,16 +23,12 @@ public class FoodModel {
         this.image = image;
     }
 
-
-    public Long getQuatntity() {
-        return quatntity;
+    public Long getQuantity() {
+        return quantity;
     }
 
-    public void setQuatntity(Long quatntity) {
-        this.quatntity = quatntity;
-    }
-
-    public FoodModel() {
+    public void setQuantity(Long quantity) {
+        this.quantity = quantity;
     }
 
     public Long getPrice() {
@@ -40,10 +39,13 @@ public class FoodModel {
         this.price = price;
     }
 
-    public FoodModel(String name, String image, Long price, Long quatntity) {
+    public cartModel(String name, String image, Long quantity, Long price) {
         this.name = name;
         this.image = image;
+        this.quantity = quantity;
         this.price = price;
-        this.quatntity = quatntity;
     }
+
+    Long quantity;
+    Long price;
 }

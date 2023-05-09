@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#80ba03"
+    tools:context=".order_failed">
+    <!--replace background with colour or image-->
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        app:cardBackgroundColor="#E2F1D3"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="4dp"
+        app:cardMaxElevation="6dp"
+        app:cardPreventCornerOverlap="false"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="7dp"
+        app:cardUseCompatPadding="true">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="110dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <pl.droidsonroids.gif.GifImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    android:clickable="false"
+                    android:background="#E2F1D3"
+                    android:src="@drawable/order_failure" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="30dp"
+                    android:textStyle="bold"
+                    android:textColor="#382E43"
+                    android:textAlignment="center"
+                    android:text="OOPS!\nPayments Failed" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textSize="18dp"
+                    android:textStyle="italic"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textAlignment="center"
+                    android:text="Your Order could not be processed at the moment.\nIn Case any amount has been deducted it will be automatically refunded within 2-3 days." />
+            </LinearLayout>
+
+
+        </ScrollView>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ret_home_btn_ofail"
+            android:background="@drawable/round_btn_rect"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="40dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Back To Home"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            android:layout_gravity="bottom"/>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

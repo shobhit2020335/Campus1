@@ -14,6 +14,15 @@
         android:theme="@style/Theme.CampusCravings"
         tools:targetApi="31">
         <activity
+            android:name=".order_failed"
+            android:exported="false" />
+        <activity
+            android:name=".order_confirmed"
+            android:exported="false" />
+        <activity
+            android:name=".payments"
+            android:exported="false" />
+        <activity
             android:name=".Cart"
             android:exported="false" />
         <activity
