@@ -6,6 +6,15 @@ public class collegeModel {
     private String name;
     private String img;
 
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
+    private boolean  selected=false;
 
     public collegeModel() {
     }

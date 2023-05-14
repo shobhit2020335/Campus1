@@ -92,7 +92,7 @@
         android:id="@+id/home_collegename"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="College Name"
+        android:text="IIITD"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/home_searchbar"
         app:layout_constraintStart_toStartOf="@+id/home_slogan1"
@@ -121,7 +121,7 @@
         android:id="@+id/home_canteen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Canteen Name"
+        android:text="Kodechef Foods"
         app:layout_constraintBottom_toBottomOf="@+id/home_collegename"
         app:layout_constraintStart_toEndOf="@+id/home_forwardicon"
         app:layout_constraintTop_toTopOf="@+id/home_collegename" />

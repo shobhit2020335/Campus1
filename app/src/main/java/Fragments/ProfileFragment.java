@@ -1,8 +1,11 @@
 package Fragments;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -11,11 +14,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.campuscravings.Cart;
+import com.example.campuscravings.MainActivity;
 import com.example.campuscravings.R;
 import com.example.campuscravings.User;
 import com.example.campuscravings.databinding.FragmentCampusBinding;
 import com.example.campuscravings.databinding.FragmentEditProfileBinding;
 import com.example.campuscravings.databinding.FragmentProfileBinding;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -95,7 +102,51 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        binding.imageView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
+                builder1.setMessage("Are you sure you want to logout?");
+                builder1.setCancelable(true);
 
+                builder1.setPositiveButton(
+                        "Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                FirebaseAuth.getInstance().signOut();
+                                GoogleSignIn.getClient(
+                                        getContext(),
+                                        new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+                                ).signOut();
+
+//                                FirebaseAuth.getInstance().signOut();
+                                Intent intent = new Intent(getContext(), MainActivity.class);
+                                startActivity(intent);
+                                dialog.cancel();
+                            }
+                        });
+
+                builder1.setNegativeButton(
+                        "No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+            }
+        });
+
+        binding.imageView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), Cart.class));
+            }
+        });
 
         return binding.getRoot();
     }

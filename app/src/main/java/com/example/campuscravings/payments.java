@@ -1,5 +1,6 @@
 package com.example.campuscravings;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -32,6 +33,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.razorpay.Checkout;
 import com.razorpay.ExternalWalletListener;
 import com.razorpay.PaymentData;
@@ -44,10 +52,21 @@ import org.w3c.dom.Text;
 
 import android.os.Bundle;
 
+import java.util.ArrayList;
+import java.util.Random;
+
+import Adapter.campusListAdapter;
+import Fragments.NotificationFragment;
+import Model.cartModel;
+import Model.collegeModel;
+
 public class payments extends AppCompatActivity implements PaymentResultWithDataListener, ExternalWalletListener {
     private static final String TAG = "PaymentActivityCC";
     private AlertDialog.Builder alertDialogBuilder;
     String sub_tot, disc, tot_amt;
+    private DatabaseReference myref;
+    private FirebaseAuth auth;
+    private ArrayList<cartModel> orderList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +74,17 @@ public class payments extends AppCompatActivity implements PaymentResultWithData
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payments);
+        myref = FirebaseDatabase.getInstance().getReference();
+        auth = FirebaseAuth.getInstance();
+
         Intent intent = getIntent();
         sub_tot = intent.getStringExtra("subtotal");
 
         disc = intent.getStringExtra("discount");
         String tot_amt1 = intent.getStringExtra("total");
 
-        tot_amt="Rs "+tot_amt1+".00";
+        orderList = Cart.modelList;
+        tot_amt = "Rs " + tot_amt1 + ".00";
 //        Log.d("subtotal",sub_tot);
         TextView sub_t_View = (TextView) findViewById(R.id.subtotal_amt_payments_act);
         sub_t_View.setText(sub_tot);
@@ -145,10 +168,21 @@ public class payments extends AppCompatActivity implements PaymentResultWithData
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
         //add payment id to database
         Intent i = new Intent(getApplicationContext(), order_confirmed.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i);
+        Random rand = new Random();
+
+        // Generate random integer between 10000 and 99999
+
+        int randomNum = rand.nextInt(9000) + 1000;
+        for (int j=0;j<orderList.size();j++){
+            getdata(orderList.get(j).getName(),orderList.get(j).getQuantity(),orderList.get(j).getPrice(),pay_id,randomNum,auth.getUid());
+            NotificationFragment.nList.add("Your oder of "+orderList.get(j).getName()+" is placed successfully");
+        }
     }
 
     @Override
@@ -169,4 +203,36 @@ public class payments extends AppCompatActivity implements PaymentResultWithData
         amt = amt.replace(".", "");
         return amt;
     }
+
+    private void getdata(String itemname, Long itemQuantity, Long price, String paymentid, int orderid, String userid) {
+        DatabaseReference query = myref.child("orders");
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                {
+                    // If no match is found, create a new child with the item details
+//                    int quantity = 1;
+//                    int price = Math.toIntExact(modelArrayList.get(pos).getPrice());
+//                    String name = modelArrayList.get(pos).getName();
+//                    String img = modelArrayList.get(pos).getImage();
+
+                    DatabaseReference newItemRef = query.push();
+                    newItemRef.child("name").setValue(itemname);
+                    newItemRef.child("oid").setValue(orderid);
+                    newItemRef.child("oquantity").setValue(itemQuantity);
+                    newItemRef.child("oprice").setValue(price);
+                    newItemRef.child("userid").setValue(userid);
+                    newItemRef.child("paymentid").setValue(paymentid);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle the error
+            }
+        });
+
+
+    }
+
 }

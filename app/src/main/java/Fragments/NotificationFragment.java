@@ -3,64 +3,68 @@ package Fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.campuscravings.R;
+import com.example.campuscravings.databinding.FragmentCampusBinding;
+import com.example.campuscravings.databinding.FragmentNotificationBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NotificationFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
+import Adapter.campusListAdapter;
+import Adapter.notificationAdapter;
+
+
 public class NotificationFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    FragmentNotificationBinding binding;
+    notificationAdapter l;
+    public static ArrayList<String> nList;
 
     public NotificationFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NotificationFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NotificationFragment newInstance(String param1, String param2) {
-        NotificationFragment fragment = new NotificationFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notification, container, false);
+
+        binding = FragmentNotificationBinding.inflate(inflater, container, false);
+
+        nList = new ArrayList<>();
+        nList.add("Welcome to campus cravings.");
+        nList.add("Your order for 2 burgers is placed successfully");
+        nList.add("Yay! Your order for 2 burgers is ready.");
+        nList.add("Hungry? Fill your cravings on campus with Campus Cravings");
+        nList.add("Your order for 1 aloo parantha is placed successfully. .");
+        nList.add("Your order for 1 aloo parantha is Ready. .");
+        nList.add("Your order for 3 omlette is placed successfully. .");
+        nList.add("Your order for 1 aloo parantha is placed successfully. .");
+        nList.add("Your order for 3 omlette is ready. .");
+        nList.add("Your order for 1 aloo parantha is ready. .");
+        binding.recycler1.setLayoutManager(new LinearLayoutManager(getContext()));
+        l = new notificationAdapter(getContext(), nList);
+        binding.recycler1.setAdapter(l);
+        l.notifyDataSetChanged();
+
+        binding.textView12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nList.clear();
+            }
+        });
+        return binding.getRoot();
     }
 }

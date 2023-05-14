@@ -31,7 +31,7 @@ public class Cart extends AppCompatActivity {
     private cartAdapter l;
     private DatabaseReference myref;
     FirebaseAuth auth;
-    private ArrayList<cartModel> modelList;
+    public static ArrayList<cartModel> modelList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

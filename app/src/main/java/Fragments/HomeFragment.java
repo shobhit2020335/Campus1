@@ -40,6 +40,7 @@ public class HomeFragment extends Fragment {
     private HomePageAdapter l;
     private DatabaseReference myref;
     private ArrayList<FoodModel> modelList;
+    public  static String CAMPUSNAME="IIIT";
     FirebaseAuth auth;
 
     DatabaseReference cartItemsRef;
@@ -77,6 +78,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        binding.homeCollegename.setText(CAMPUSNAME);
 //        cartItemsRef.addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot snapshot) {

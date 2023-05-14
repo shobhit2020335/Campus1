@@ -61,6 +61,12 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.Viewho
 
         int pos = position;
         holder.foodname.setText(modelArrayList.get(position).getName());
+//        holder.foodname.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(context, "Selected: "+holder., Toast.LENGTH_SHORT).show();
+//            }
+//        });
         holder.foodprice.setText(modelArrayList.get(position).getPrice().toString());
         Long quantity = modelArrayList.get(position).getQuatntity();
         if (quantity != null) {

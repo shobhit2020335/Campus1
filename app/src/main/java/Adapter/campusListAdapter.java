@@ -2,6 +2,7 @@ package Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,10 +21,12 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.example.campuscravings.Home;
 import com.example.campuscravings.R;
 
 import java.util.ArrayList;
 
+import Fragments.HomeFragment;
 import Model.collegeModel;
 
 public class campusListAdapter extends RecyclerView.Adapter<campusListAdapter.Viewholder> {
@@ -45,7 +49,25 @@ public class campusListAdapter extends RecyclerView.Adapter<campusListAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
+        int pos=position;
         holder.textView.setText(modelArrayList.get(position).getName());
+        holder.textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "selected: "+modelArrayList.get(pos).getName(), Toast.LENGTH_SHORT).show();
+                HomeFragment.CAMPUSNAME=modelArrayList.get(pos).getName();
+                for (int i=0;i<modelArrayList.size();i++){
+                    if (modelArrayList.get(i).getName().equals(modelArrayList.get(pos).getName())){
+                        holder.textView.setTextColor(Color.GREEN);
+                    }
+                    else {
+                        holder.textView.setTextColor(Color.BLACK);
+                    }
+                }
+
+
+            }
+        });
         Glide.with(context)
                 .load(modelArrayList.get(position).getImg()).placeholder(R.drawable.placeholder).addListener(new RequestListener<Drawable>() {
                     @Override
@@ -62,20 +84,6 @@ public class campusListAdapter extends RecyclerView.Adapter<campusListAdapter.Vi
                 })
                 .into(holder.imageView);
         String key = modelArrayList.get(position).getKey();
-//        holder.textView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(context, airport.class);
-//                intent.putExtra("name", holder.textView.getText().toString());
-//                intent.putExtra("i1", holder.imageView.toString());
-//                intent.putExtra("key", key);
-//                context.startActivity(intent);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//
-//
-//            }
-//        });
-
 
     }
     @Override

@@ -131,7 +131,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="8dp"
-                                    android:text="Sample"
+                                    android:text="My Cart"
                                     android:textAlignment="center"
                                     android:textSize="16sp"
                                     android:textStyle="bold" />
@@ -162,7 +162,7 @@
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toTopOf="parent"
-                                        app:srcCompat="@drawable/img" />
+                                        app:srcCompat="@drawable/myorders" />
 
                                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -171,7 +171,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="8dp"
-                                    android:text="Sample"
+                                    android:text="My Orders"
                                     android:textAlignment="center"
                                     android:textSize="16sp"
                                     android:textStyle="bold" />
@@ -202,7 +202,7 @@
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toTopOf="parent"
-                                        app:srcCompat="@drawable/img" />
+                                        app:srcCompat="@drawable/logout" />
 
                                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -211,7 +211,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="8dp"
-                                    android:text="Sample"
+                                    android:text="Logout"
                                     android:textAlignment="center"
                                     android:textSize="16sp"
                                     android:textStyle="bold" />
